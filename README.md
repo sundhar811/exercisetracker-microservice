@@ -12,3 +12,30 @@
 
 ## Challenge link:
 https://learn.freecodecamp.org/apis-and-microservices/apis-and-microservices-projects/exercise-tracker
+
+### Sample APIs
+#### GET
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/log?userId=LHagJY6m&from=2018-03-10&to=2018-09-11&limit=3
+
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/log?userId=LHagJY6m&from=2018-03-10&to=2018-09-11
+
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/log?userId=LHagJY6m&from=2018-08-10&to=2018-09-11
+
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/log?userId=LHagJY6m
+
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/log?userId=LHagJY6m&limit=2
+
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/users
+
+#### POST
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/new-user
+`{ username: 'abc' }`
+
+https://sundhar811-exercisetracker-microservice.glitch.me/api/exercise/add
+
+`{ 
+userId: 'LHagJY6m',
+description: 'Description of the exercise', 
+duration: 12, 
+date: '2017-11-11'
+}`

@@ -99,13 +99,37 @@ app.get('/api/exercise/users', (req, res) => {
 })
 
 // get exercise log
-app.get('/api/exercise/log?userId=:userId', (req, res) => {
-  let { userId, from, to, limit } = req.params;
-  console.log(req.query, req.params)
-  Exercise.find({ userId: userId }, (err, data) => {
-    if(err) res.send(err)
-    else res.send(data)
-  })
+app.get('/api/exercise/log', (req, res) => {
+  let { userId, from, to, limit } = req.query;
+  limit = limit ? Number(limit) : limit
+  from = from ? new Date(from) : from
+  to = to ? new Date(to) : to
+  if (userId) {
+    if (from & to) {
+      Exercise.find({ userId: userId })
+            .where('date').gte(from).lte(to)
+            .limit(limit ? limit : null)
+            .exec((err, data) => {
+              if(err) res.send(err)
+              else res.send({count: data.length, log: data})
+            })
+    } else if(limit) {
+      Exercise.find({ userId: userId })
+            .limit(limit)
+            .exec((err, data) => {
+              if(err) res.send(err)
+              else res.send({count: data.length, log: data})
+            })
+    } else {
+      Exercise.find({ userId: userId })
+            .exec((err, data) => {
+              if(err) res.send(err)
+              else res.send({count: data.length, log: data})
+            })
+    }
+  } else {
+    res.send({error: 'No userId sepecified'})
+  }
 })
 
 // Not found middleware
